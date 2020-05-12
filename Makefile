@@ -1,16 +1,15 @@
-objects = hello.o hello1.o hello2.o hello3.o
+.PHONY: clean build
 
-default: clean execute
+SRC_DIR := src
+BIN_DIR := build
+SRC := $(wildcard $(SRC_DIR)/*.cpp)
+BIN := $(SRC:$(SRC_DIR)/%.cpp=$(BIN_DIR)/%)
 
-hello: $(objects)
-	g++ -o hello $(objects)
+build: clean ${BIN}
 
-$(objects): hello.h
+$(BIN_DIR)/%: $(SRC_DIR)/%.cpp
+	g++ $< -o $@
 
-.PHONY: clean elecute
 clean:
-	rm -f hello $(objects)
-
-execute: hello
-	./hello
+	-rm -f ${BIN}
 
