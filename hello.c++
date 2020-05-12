@@ -1,9 +1,10 @@
-#include<iostream>
+#include "hello.h"
 
-using namespace std;
 
 int main(int argc, char *argv[])
 {
-	cout<<"Hello World!"<<endl;
+	hello1();
+	hello2();
+	hello3();
 }
 
